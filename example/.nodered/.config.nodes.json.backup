@@ -416,26 +416,6 @@
             }
         }
     },
-    "@tonimoeckel/node-red-contrib-prismapro": {
-        "name": "@tonimoeckel/node-red-contrib-prismapro",
-        "version": "1.0.0",
-        "local": false,
-        "user": false,
-        "nodes": {
-            "prismapro-apicall": {
-                "name": "prismapro-apicall",
-                "types": [
-                    "prismapro-client",
-                    "prismapro-apicall"
-                ],
-                "enabled": true,
-                "local": false,
-                "user": false,
-                "module": "@tonimoeckel/node-red-contrib-prismapro",
-                "file": "/Users/tonimoeckel/Development/node-red-contrib-prismapro/example/node_modules/node-red-contrib-prismapro/APICall.js"
-            }
-        }
-    },
     "@tonimoeckel/node-red-prismapro": {
         "name": "@tonimoeckel/node-red-prismapro",
         "version": "1.0.0",

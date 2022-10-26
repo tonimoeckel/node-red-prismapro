@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "@tonimoeckel/node-red-prismapro",
   "scripts": {
     "pull": "git fetch origin && git pull origin",
@@ -7,12 +7,16 @@
     "commit:patch": "npm version patch --no-git-tag-version --force && npm run commit",
     "tag:version": "git tag v$(cat package.json | grep version | head -1 | awk -F= \"{ print $2 }\" | sed 's/[version:,\\\",]//g' | tr -d '[[:space:]]')",
     "precommit": "git add --all",
-    "postcommit": "git push origin"
+    "postcommit": "git push origin",
+    "publish:public": "npm publish --access public"
   },
   "dependencies": {
     "node-fetch": "^3.2.4",
     "jest": "^29.2.2"
   },
+  "keywords": [
+    "node-red"
+  ],
   "node-red": {
     "nodes": {
       "prismapro-apicall": "APICall.js"
