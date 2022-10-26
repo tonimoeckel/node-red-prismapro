@@ -1,0 +1,272 @@
+[
+    {
+        "id": "8f08ac9e63b0b05a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b11313094891e06f",
+        "type": "prismapro-client",
+        "name": "Labor Prisma",
+        "host": "172.22.9.21",
+        "simulation": false
+    },
+    {
+        "id": "a9d9df116859bb12",
+        "type": "inject",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 140,
+        "wires": [
+            [
+                "1260e3e1b3220b85"
+            ]
+        ]
+    },
+    {
+        "id": "1260e3e1b3220b85",
+        "type": "prismapro-apicall",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "client": "b11313094891e06f",
+        "path": "/mmsp/electronicsInfo",
+        "pathType": "path",
+        "mode": "get",
+        "modeType": "mode",
+        "x": 470,
+        "y": 140,
+        "wires": [
+            [
+                "71fb05c9698e1085"
+            ]
+        ]
+    },
+    {
+        "id": "71fb05c9698e1085",
+        "type": "debug",
+        "z": "8f08ac9e63b0b05a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "15158b90823d05fe",
+        "type": "prismapro-apicall",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "client": "b11313094891e06f",
+        "path": "/mmsp/status/systemStatus",
+        "pathType": "path",
+        "mode": "get",
+        "modeType": "mode",
+        "x": 480,
+        "y": 220,
+        "wires": [
+            [
+                "71fb05c9698e1085"
+            ]
+        ]
+    },
+    {
+        "id": "09437aa12f7bd82d",
+        "type": "inject",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 220,
+        "wires": [
+            [
+                "15158b90823d05fe"
+            ]
+        ]
+    },
+    {
+        "id": "d55b3517b736c287",
+        "type": "prismapro-apicall",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "client": "b11313094891e06f",
+        "path": "/mmsp/scanInfo/scanning",
+        "pathType": "path",
+        "mode": "get",
+        "modeType": "mode",
+        "x": 470,
+        "y": 280,
+        "wires": [
+            [
+                "71fb05c9698e1085"
+            ]
+        ]
+    },
+    {
+        "id": "3911960bf3dd8fac",
+        "type": "inject",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "d55b3517b736c287"
+            ]
+        ]
+    },
+    {
+        "id": "552a420370686a5b",
+        "type": "prismapro-apicall",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "client": "b11313094891e06f",
+        "path": "/mmsp/scanSetup/scanStart",
+        "pathType": "path",
+        "mode": "set",
+        "modeType": "mode",
+        "data": "",
+        "dataType": "",
+        "x": 480,
+        "y": 340,
+        "wires": [
+            [
+                "71fb05c9698e1085"
+            ]
+        ]
+    },
+    {
+        "id": "036fbafd86e245cd",
+        "type": "inject",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 340,
+        "wires": [
+            [
+                "552a420370686a5b"
+            ]
+        ]
+    },
+    {
+        "id": "4d5bd4141537345b",
+        "type": "prismapro-apicall",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "client": "b11313094891e06f",
+        "path": "/mmsp/scanSetup/scanStop",
+        "pathType": "path",
+        "mode": "set",
+        "modeType": "mode",
+        "data": "",
+        "dataType": "",
+        "x": 480,
+        "y": 400,
+        "wires": [
+            [
+                "71fb05c9698e1085"
+            ]
+        ]
+    },
+    {
+        "id": "62b0ce0f6ad02df6",
+        "type": "inject",
+        "z": "8f08ac9e63b0b05a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 400,
+        "wires": [
+            [
+                "4d5bd4141537345b"
+            ]
+        ]
+    }
+]

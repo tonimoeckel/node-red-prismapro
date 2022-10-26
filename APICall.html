@@ -1,0 +1,139 @@
+<script type="text/javascript">
+    RED.nodes.registerType("prismapro-client", {
+        category: "config",
+        defaults: {
+            name: { value: "" },
+            host: { value: "" },
+            simulation: { value: false }
+        },
+        label: function () {
+            return this.name || `${this.host}`;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="prismapro-client">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" />
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-simulation"><i class="fa fa-tag"></i> Simulation</label>
+        <input type="checkbox" id="node-config-input-simulation" />
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"
+        ><i class="fa fa-server"></i> Host</label
+        >
+        <input type="text" id="node-config-input-host" />
+    </div>
+</script>
+
+<script type="text/markdown" data-help-name="prismapro-client">
+Configuration node for PrismaPro Clients
+
+</script>
+
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('prismapro-apicall', {
+        category: 'PrismaPro',
+        color: '#cc0033',
+        defaults: {
+            name: {value: ""},
+            client: {type: "prismapro-client"},
+            path: {value:""},
+            pathType: {value:"path"},
+            mode: {value:"get"},
+            modeType: {value:"mode"},
+            data: {value:""},
+            dataType: {value:"data"},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "PVViewerLogoCircle_white.svg",
+        paletteLabel: "PrismaPro API Call",
+        label: function () {
+            return this.name && this.name.length ? this.name : this.path || "PrismaPro API Call";
+        },
+        oneditprepare: function() {
+            $.ajax({
+                url: RED.settings.httpNodeRoot+"/prismapro/api",
+                method: 'GET',
+                dataType: "json",
+                contentType: "application/json",
+                success: function(data) {
+
+                    $("#node-input-path").typedInput({
+                        typeField: $("#node-input-pathType"),
+                        types: [{
+                            icon: 'fa fa-list',
+                            label: 'API Call',
+                            value: "path",
+                            options: data.map((p) => ({
+                                value: p.path,
+                                label: `[${p.path}] ${p.title}`
+                            }))
+                        },"str","msg"]
+                    })
+
+                    $("#node-input-mode").typedInput({
+                        typeField: $("#node-input-modeType"),
+                        types: [{
+                            icon: 'fa fa-list',
+                            label: 'Mode',
+                            value: "mode",
+                            options: [{
+                                value: 'get',
+                                title: 'get'
+                            },{
+                                value: 'set',
+                                title: 'set'
+                            }]
+                        },"str","msg"]
+                    })
+                }
+            });
+        }
+    });
+</script>
+
+<script data-template-name="prismapro-apicall" type="text/html">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-client"
+        ><i class="fa fa-server"></i> PrismaPro Client</label
+        >
+        <input type="text" id="node-input-client" />
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-path"><i class="fa fa-arrow-circle-o-right"></i> API Call</label>
+        <input type="text" id="node-input-path" placeholder="Please select">
+        <input type="hidden" id="node-input-pathType">
+    </div>
+
+
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-pencil"></i> Mode</label>
+        <input type="text" id="node-input-mode" placeholder="Please select">
+        <input type="hidden" id="node-input-modeType">
+    </div>
+
+
+    <div class="form-row">
+        <label for="node-input-data"><i class="fa fa-input"></i> Data</label>
+        <input type="text" id="node-input-data" placeholder="">
+        <input type="hidden" id="node-input-dataType">
+    </div>
+
+</script>
+
+<script data-help-name="prismapro-apicall" type="text/html">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>
