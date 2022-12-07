@@ -6,7 +6,7 @@ This lib currently supports:
 ## Installation
 
 ```bash
-npm install @tonimoeckel/node-red-prismapro
+npm install @dreebit/node-red-prismapro
 ```
 
 ## Usage
