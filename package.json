@@ -1,6 +1,6 @@
 {
   "version": "1.0.2",
-  "name": "@tonimoeckel/node-red-prismapro",
+  "name": "@dreebit/node-red-prismapro",
   "scripts": {
     "pull": "git fetch origin && git pull origin",
     "commit": "git commit -m v$(cat package.json | grep version | head -1 | awk -F= \"{ print $2 }\" | sed 's/[version:,\\\",]//g' | tr -d '[[:space:]]')",
